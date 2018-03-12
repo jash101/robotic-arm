@@ -4,4 +4,4 @@
 Arm contains three revolute joints and an end effector.
 This is implemented by using four servos
 
-More info will be updated.
+More info and images will be added shortly.
