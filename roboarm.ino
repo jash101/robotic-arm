@@ -129,25 +129,6 @@ void loop() // here we go!
         digitalWrite(13, HIGH); delay(500);   
         digitalWrite(13, LOW); delay(500);
       }
-// ---------------------------------------------------------------------------------- Textout serial
-    // serial ausgabe 1 sek
-    /*if(currentMillis - previousMillis2 > 5000)
-    { 
-      previousMillis2 = currentMillis;
-      /*count0 = 0;
-      while(count0 < 4)
-      {
-        int val = SensVal[count0];
-      // val = map(val, 142, 888, 0, 180);
-        Serial.println(val);
-        //Serial.println("test");
-        count0 += 1;
-      }
-      Serial.println(playmode); 
-      Serial.println(arrayStep);    
-      Serial.println(arrayMax);    
-      Serial.println(" ");    
-    }*/
 }
 
 // ---------------------------------------------------------------------------------------- sub routinen
@@ -158,11 +139,6 @@ void calc_pause() // read pot and map to usable delay time after a complete move
     if (temp < 0) temp = 0;
     temp = map(temp, 0, 680, 0 ,6); 
     verz = Delay[temp]; // verz = delay in second
-    /*Serial.print(temp);
-          Serial.print(" ");
-          Serial.print(verz);
-          Serial.print(" ");
-          Serial.println(countverz);*/
 }
 
 void readPot() // read analog inputs and add some offsets (mechanical corrections)
@@ -353,13 +329,6 @@ void Button() // check buttons for single and doubleclick
       delay(250);   
       digitalWrite(13, LOW);    
     }
-    /*if (Taster == 3)
-    {
-      // ++ arrayStep
-      // playmode = 1;
-      Taster = 0;
-      Serial.println("Clear ");
-    }*/
     if (currentMillis - previousMillis3 > 2000) // button Status clear
     {
       Taster = 0;
