@@ -1,8 +1,6 @@
  /*
-serial config:
-Board: Arduiono Pro / Pro Mini
-Port:  tty.usbseriala400eMNr
-Programmer: USBtinyISP
+Program Purpose: Teach the arm and let it execute the steps.
+Author: Jash Mota
 */
 
 // Definitionen
@@ -13,10 +11,10 @@ Servo servo_1;
 Servo servo_2;
 Servo servo_3;
 
-int sensorPin0 = A0;    // Schulter
+int sensorPin0 = A0;    // Shoulder
 int sensorPin1 = A1;    // Hand
-int sensorPin2 = A2;    // Ellbogen
-int sensorPin3 = A3;    // Zange
+int sensorPin2 = A2;    // Elbow
+int sensorPin3 = A3;    // tongs
 int count0, arrayStep, arrayMax, countverz, Taster, stepsMax, steps, time = 1000, del = 1000, temp;
 // arraystep = memory what pos in the array
 // arrayMax = max steps we safed to array
@@ -64,22 +62,22 @@ void setup()
 
 void loop() // here we go!
 {
-  currentMillis = millis(); // all is about timing
+  currentMillis = millis(); // it's all about timing...
   currentMicros = micros();
   
   // read the button  
   Button();
   
-  if(!playmode) // manualy modus
+  if(!playmode) // manual mode
   {        
-    if(currentMillis - previousMillis1 > 25) // 25miliseconds until next manual mode update
+    if(currentMillis - previousMillis1 > 25) // 25 miliseconds until next manual mode update
     {
       if (arrayStep < top) 
       {
         previousMillis1 = currentMillis; //reset
         readPot(); // get the value from potentiometers
         mapping(); // map to milliseconds for servos
-        move_servo(); // setz newservo position
+        move_servo(); // sets new servo position
         //record();   
       } // end counter < max
     } // end step check
@@ -94,7 +92,7 @@ void loop() // here we go!
       {
         arrayStep += 1; // next array pos
         Read(); // from the arrays
-        calculate(); // find biggest travel distance and calculate the other 3 servos (the have to do smaler steps to be finished at same time!)
+        calculate(); // find biggest travel distance and calculate the other 3 servos (the have to do smaller steps to be finished at same time!)
         Step = 0;
         digitalWrite(13, LOW);  
       }
